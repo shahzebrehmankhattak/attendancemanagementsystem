@@ -60,41 +60,67 @@ const Employee = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">
-          {employeeLoading ? (
-            <Spin size="large" tip="Loading Employees..." />
-          ) : (
-            <div className="flex items-center gap-2 justify-center flex-wrap">
-              {filteredData?.map((item) => (
-                <div
-                  className="cursor-pointer"
-                  onClick={() => navigate(`/profile/${item?.id}`)}
-                  key={item?.id || item?.deviceUserId}
-                >
-                  <Card className="flex justify-center items-center !bg-gradient-to-r !from-[#39444b] !via-[#3b616f] !to-[#3e89a4] !text-white !rounded-xl !shadow-lg p-0 !lg:p-6">
-                    <img
-                      src={item?.image || dummyImage}
-                      alt="user-image"
-                      className="rounded-[50%] w-37.5 md:w-55 md:h-55 m-auto"
-                    />
-                    <div className="w-50 text-center mt-2">
-                      <h4 className="text-sm md:text-base font-semibold capitalize">
-                        {item?.name}
-                      </h4>
-                      <p className="text-xs md:text-sm font-semibold">
-                        {item?.active === true ? "Current Employee" : "None"}
-                      </p>
-                      <p className="text-xs md:text-sm font-semibold capitalize">
-                        {item?.deviceUserId}
-                      </p>
-                      <p className="text-xs md:text-sm font-semibold capitalize">
-                        {item?.department}
-                      </p>
-                    </div>
-                  </Card>
-                </div>
-              ))}
+        {filteredData ? (
+  employeeLoading ? (
+    <Spin size="large" tip="Loading Employees..." />
+  ) : (
+    <div className="flex items-center gap-2 justify-center flex-wrap">
+      {filteredData?.map((item) => (
+        <div
+          className="cursor-pointer"
+          onClick={() => navigate(`/profile/${item?.id}`)}
+          key={item?.id || item?.deviceUserId}
+        >
+          <Card className="flex justify-center items-center !bg-gradient-to-r !from-[#39444b] !via-[#3b616f] !to-[#3e89a4] !text-white !rounded-xl !shadow-lg p-0 !lg:p-6">
+            <img
+              src={item?.image || dummyImage}
+              alt="user-image"
+              className="rounded-[50%] w-37.5 md:w-55 md:h-55 m-auto"
+            />
+            <div className="w-50 text-center mt-2">
+              <h4 className="text-sm md:text-base font-semibold capitalize">
+                {item?.name}
+              </h4>
+              <p className="text-xs md:text-sm font-semibold">
+                {item?.active === true ? "Current Employee" : "None"}
+              </p>
+              <p className="text-xs md:text-sm font-semibold capitalize">
+                {item?.deviceUserId}
+              </p>
+              <p className="text-xs md:text-sm font-semibold capitalize">
+                {item?.department}
+              </p>
             </div>
-          )}
+          </Card>
+        </div>
+      ))}
+    </div>
+  )
+) : (
+  <Card className="flex justify-center items-center !bg-gradient-to-r !from-[#39444b] !via-[#3b616f] !to-[#3e89a4] !text-white !rounded-xl !shadow-lg p-0 !lg:p-6">
+  <img
+    src={dummyImage}
+    alt="user-image"
+    className="rounded-[50%] w-37.5 md:w-55 md:h-55 m-auto"
+  />
+  <div className="w-50 text-center mt-2">
+    <h4 className="text-sm md:text-base font-semibold capitalize">
+      Shahzeb Rehman Khattak
+    </h4>
+    <p className="text-xs md:text-sm font-semibold">
+      Current Employee
+    </p>
+    <p className="text-xs md:text-sm font-semibold capitalize">
+      003
+    </p>
+    <p className="text-xs md:text-sm font-semibold capitalize">
+     Development
+    </p>
+  </div>
+</Card>
+
+)}
+         
         </div>
       </Card>
     </>
